@@ -1,11 +1,134 @@
 [
   {
-    "type": "source_file",
+    "type": "IncludeDirective_",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "stringToken",
+          "named": true
+        }
+      ]
+    }
   },
   {
-    "type": "hello",
+    "type": "escapedChar",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "hexdigit",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "IncludeDirective_",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "stringToken",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escapedChar",
+          "named": true
+        },
+        {
+          "type": "stringChar",
+          "named": true
+        },
+        {
+          "type": "verbatimStringChar",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "@",
+    "named": false
+  },
+  {
+    "type": "\\\"",
+    "named": false
+  },
+  {
+    "type": "\\'",
+    "named": false
+  },
+  {
+    "type": "\\0",
+    "named": false
+  },
+  {
+    "type": "\\U{",
+    "named": false
+  },
+  {
+    "type": "\\\\",
+    "named": false
+  },
+  {
+    "type": "\\n",
+    "named": false
+  },
+  {
+    "type": "\\r",
+    "named": false
+  },
+  {
+    "type": "\\t",
+    "named": false
+  },
+  {
+    "type": "\\u",
+    "named": false
+  },
+  {
+    "type": "hexdigit",
+    "named": true
+  },
+  {
+    "type": "include",
+    "named": false
+  },
+  {
+    "type": "stringChar",
+    "named": true
+  },
+  {
+    "type": "verbatimStringChar",
+    "named": true
+  },
+  {
+    "type": "}",
     "named": false
   }
 ]

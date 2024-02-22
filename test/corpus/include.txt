@@ -1,0 +1,21 @@
+==================
+Include directives
+==================
+
+include "A.B"
+include "A/B"
+
+---
+
+(source_file
+  (IncludeDirective_
+    (stringToken
+      (stringChar)
+      (stringChar)
+      (stringChar)))
+  (IncludeDirective_
+    (stringToken
+      (stringChar)
+      (stringChar)
+      (stringChar))))
+
