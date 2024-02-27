@@ -51,7 +51,6 @@
 ;  "object"
 ;  "object?"
 ;  "old"
-;  "opaque"
 ;  "ORDINAL"
 ;  "predicate"
 ;  "print"
@@ -90,6 +89,7 @@
  "import"
  "include"
  "module"
+ "opaque"
  "opened"
  "static"
 ] @keyword
