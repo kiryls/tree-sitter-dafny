@@ -1,7 +1,6 @@
 ; Keywords
 
 ; [
-;  "abstract"
 ;  "allocated"
 ;  "as"
 ;  "assert"
@@ -30,12 +29,9 @@
 ;  "forall"
 ;  "fresh"
 ;  "function"
-;  "ghost"
 ;  "if"
 ;  "imap"
-;  "import"
 ;  "in"
-;  "include"
 ;  "int"
 ;  "invariant"
 ;  "is"
@@ -48,7 +44,6 @@
 ;  "method"
 ;  "modifies"
 ;  "modify"
-;  "module"
 ;  "multiset"
 ;  "nameonly"
 ;  "nat"
@@ -59,7 +54,6 @@
 ;  "object?"
 ;  "old"
 ;  "opaque"
-;  "opened"
 ;  "ORDINAL"
 ;  "predicate"
 ;  "print"
@@ -74,7 +68,6 @@
 ;  "reveals"
 ;  "seq"
 ;  "set"
-;  "static"
 ;  "string"
 ;  "then"
 ;  "this"
@@ -92,17 +85,30 @@
 
 
 [
- "include"
- "module"
  "abstract"
  "ghost"
+ "import"
+ "include"
+ "module"
+ "opened"
+ "static"
 ] @keyword
 
 (stringToken) @string
 
+(AttributeName) @attribute
+
+;
+; modules
+;
+
+(ModuleName) @module
+
 (ModuleQualifiedName) @module
 
-(AttributeName) @attribute
+(QualifiedModuleExport) @module
+
+
 
 
 

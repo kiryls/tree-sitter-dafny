@@ -1,0 +1,126 @@
+=============
+Module Import
+=============
+
+import M
+
+static import M
+
+import opened M
+
+import M`1
+
+import M`N
+
+import M`{
+  N
+}
+
+import M`{
+  N,
+  O,
+  P
+}
+
+import M=N
+
+---
+
+(source_file
+  (TopDecl
+    (SubModuleDecl
+      (ModuleImport
+        (QualifiedModuleExport
+          (ModuleQualifiedName
+            (ModuleName
+              (NoUSIdent
+                (noUSNondigitIdChar))))))))
+
+(TopDecl
+    (DeclModifier)
+    (SubModuleDecl
+      (ModuleImport
+        (QualifiedModuleExport
+          (ModuleQualifiedName
+            (ModuleName
+              (NoUSIdent
+                (noUSNondigitIdChar))))))))
+
+  (TopDecl
+    (SubModuleDecl
+      (ModuleImport
+        (QualifiedModuleExport
+          (ModuleQualifiedName
+            (ModuleName
+              (NoUSIdent
+                (noUSNondigitIdChar))))))))
+
+    (TopDecl
+      (SubModuleDecl
+        (ModuleImport
+          (QualifiedModuleExport
+            (ModuleQualifiedName
+              (ModuleName
+                (NoUSIdent
+                  (noUSNondigitIdChar))))
+            (ModuleExportSuffix
+              (ExportId
+                (digits
+                  (digit))))))))
+
+    (TopDecl
+      (SubModuleDecl
+        (ModuleImport
+          (QualifiedModuleExport
+            (ModuleQualifiedName
+              (ModuleName
+                (NoUSIdent
+                  (noUSNondigitIdChar))))
+            (ModuleExportSuffix
+              (ExportId
+                (NoUSIdent
+                  (noUSNondigitIdChar))))))))
+
+    (TopDecl
+      (SubModuleDecl
+        (ModuleImport
+          (QualifiedModuleExport
+            (ModuleQualifiedName
+              (ModuleName
+                (NoUSIdent
+                  (noUSNondigitIdChar))))
+            (ModuleExportSuffix
+              (ExportId
+                (NoUSIdent
+                  (noUSNondigitIdChar))))))))
+
+   (TopDecl
+      (SubModuleDecl
+        (ModuleImport
+          (QualifiedModuleExport
+            (ModuleQualifiedName
+              (ModuleName
+                (NoUSIdent
+                  (noUSNondigitIdChar))))
+            (ModuleExportSuffix
+              (ExportId
+                (NoUSIdent
+                  (noUSNondigitIdChar)))
+              (ExportId
+                (NoUSIdent
+                  (noUSNondigitIdChar)))
+              (ExportId
+                (NoUSIdent
+                  (noUSNondigitIdChar))))))))
+
+     (TopDecl
+      (SubModuleDecl
+        (ModuleImport
+          (ModuleName
+            (NoUSIdent
+              (noUSNondigitIdChar)))
+          (QualifiedModuleExport
+            (ModuleQualifiedName
+              (ModuleName
+                (NoUSIdent
+                  (noUSNondigitIdChar)))))))))

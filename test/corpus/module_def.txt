@@ -2,14 +2,22 @@
 Module Definition
 =================
 
-module ModuleNameA {}
+module M {}
 
-module {: AttrName } ModuleNameB {}
+module {: A } M {}
 
-module ModuleNameC.SubmoduleD {}
+module M.N {}
 
-module ModuleNameE {
-  module ModuleNameF {}
+module M {
+  module N {}
+}
+
+abstract module M {}
+
+abstract ghost module M {}
+
+abstract ghost module M {
+  abstract ghost module N {}
 }
 
 ---
@@ -23,16 +31,6 @@ module ModuleNameE {
           (ModuleName
             (NoUSIdent
               (noUSNondigitIdChar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
               )
             )
           )
@@ -47,27 +45,13 @@ module ModuleNameE {
           (AttributeName
             (NoUSIdent
               (noUSNondigitIdChar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar))))
+            )
+          )
+        )
         (ModuleQualifiedName
           (ModuleName
             (NoUSIdent
               (noUSNondigitIdChar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
               )
             )
           )
@@ -82,30 +66,11 @@ module ModuleNameE {
           (ModuleName
             (NoUSIdent
               (noUSNondigitIdChar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
             )
           )
           (ModuleName
             (NoUSIdent
               (noUSNondigitIdChar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
             )
           )
         )
@@ -120,16 +85,6 @@ module ModuleNameE {
           (ModuleName
             (NoUSIdent
               (noUSNondigitIdChar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
-              (idchar)
             )
           )
         )
@@ -140,16 +95,6 @@ module ModuleNameE {
                 (ModuleName
                   (NoUSIdent
                     (noUSNondigitIdChar)
-                    (idchar)
-                    (idchar)
-                    (idchar)
-                    (idchar)
-                    (idchar)
-                    (idchar)
-                    (idchar)
-                    (idchar)
-                    (idchar)
-                    (idchar)
                   )
                 )
               )
@@ -159,4 +104,66 @@ module ModuleNameE {
       )
     )
   )
- )
+
+(TopDecl
+    (DeclModifier)
+    (SubModuleDecl
+      (ModuleDefinition
+        (ModuleQualifiedName
+          (ModuleName
+            (NoUSIdent
+              (noUSNondigitIdChar)
+            )
+          )
+        )
+      )
+    )
+  )
+
+(TopDecl
+    (DeclModifier)
+    (DeclModifier)
+    (SubModuleDecl
+      (ModuleDefinition
+        (ModuleQualifiedName
+          (ModuleName
+            (NoUSIdent
+              (noUSNondigitIdChar)
+            )
+          )
+        )
+      )
+    )
+  )
+
+  (TopDecl
+    (DeclModifier)
+    (DeclModifier)
+    (SubModuleDecl
+      (ModuleDefinition
+        (ModuleQualifiedName
+          (ModuleName
+            (NoUSIdent
+              (noUSNondigitIdChar)
+            )
+          )
+        )
+        (TopDecl
+          (DeclModifier)
+          (DeclModifier)
+          (SubModuleDecl
+            (ModuleDefinition
+              (ModuleQualifiedName
+                (ModuleName
+                  (NoUSIdent
+                    (noUSNondigitIdChar)
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
