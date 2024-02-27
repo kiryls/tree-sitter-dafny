@@ -1,0 +1,48 @@
+=============
+Module Export
+=============
+
+export ...
+
+export X
+
+export extends X
+
+export X ... extends Y, Z, W
+
+---
+
+(source_file
+  (TopDecl
+    (SubModuleDecl
+      (ModuleExport)))
+
+  (TopDecl
+    (SubModuleDecl
+      (ModuleExport
+        (ExportId
+          (NoUSIdent
+            (noUSNondigitIdChar))))))
+
+  (TopDecl
+    (SubModuleDecl
+      (ModuleExport
+        (ExportId
+          (NoUSIdent
+            (noUSNondigitIdChar))))))
+
+  (TopDecl
+    (SubModuleDecl
+      (ModuleExport
+        (ExportId
+          (NoUSIdent
+            (noUSNondigitIdChar)))
+        (ExportId
+          (NoUSIdent
+            (noUSNondigitIdChar)))
+        (ExportId
+          (NoUSIdent
+            (noUSNondigitIdChar)))
+        (ExportId
+          (NoUSIdent
+            (noUSNondigitIdChar)))))))

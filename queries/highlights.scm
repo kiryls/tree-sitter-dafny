@@ -22,8 +22,6 @@
 ;  "ensures"
 ;  "exists"
 ;  "expect"
-;  "export"
-;  "extends"
 ;  "false"
 ;  "for"
 ;  "forall"
@@ -86,6 +84,8 @@
 
 [
  "abstract"
+ "export"
+ "extends"
  "ghost"
  "import"
  "include"
@@ -107,6 +107,8 @@
 (ModuleQualifiedName) @module
 
 (QualifiedModuleExport) @module
+
+(ModuleExport) @module
 
 
 
