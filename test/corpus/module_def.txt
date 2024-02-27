@@ -3,11 +3,19 @@ Module Definition
 =================
 
 module ModuleNameA {}
+
 module {: AttrName } ModuleNameB {}
+
+module ModuleNameC.SubmoduleD {}
+
+module ModuleNameE {
+  module ModuleNameF {}
+}
 
 ---
 
 (source_file
+
   (TopDecl
     (SubModuleDecl
       (ModuleDefinition
@@ -31,6 +39,7 @@ module {: AttrName } ModuleNameB {}
         )
       )
     )
+
 (TopDecl
     (SubModuleDecl
       (ModuleDefinition
@@ -65,4 +74,89 @@ module {: AttrName } ModuleNameB {}
         )
       )
     )
+
+(TopDecl
+    (SubModuleDecl
+      (ModuleDefinition
+        (ModuleQualifiedName
+          (ModuleName
+            (NoUSIdent
+              (noUSNondigitIdChar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+            )
+          )
+          (ModuleName
+            (NoUSIdent
+              (noUSNondigitIdChar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+            )
+          )
+        )
+      )
+    )
   )
+
+ (TopDecl
+    (SubModuleDecl
+      (ModuleDefinition
+        (ModuleQualifiedName
+          (ModuleName
+            (NoUSIdent
+              (noUSNondigitIdChar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+            )
+          )
+        )
+        (TopDecl
+          (SubModuleDecl
+            (ModuleDefinition
+              (ModuleQualifiedName
+                (ModuleName
+                  (NoUSIdent
+                    (noUSNondigitIdChar)
+                    (idchar)
+                    (idchar)
+                    (idchar)
+                    (idchar)
+                    (idchar)
+                    (idchar)
+                    (idchar)
+                    (idchar)
+                    (idchar)
+                    (idchar)
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+ )
