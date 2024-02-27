@@ -57,7 +57,6 @@
 ;  "provides"
 ;  "reads"
 ;  "real"
-;  "refines"
 ;  "requires"
 ;  "return"
 ;  "returns"
@@ -91,6 +90,7 @@
  "module"
  "opaque"
  "opened"
+ "refines"
  "static"
 ] @keyword
 

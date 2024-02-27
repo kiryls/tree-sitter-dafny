@@ -20,6 +20,8 @@ abstract ghost module M {
   abstract ghost module N {}
 }
 
+module M refines N {}
+
 ---
 
 (source_file
@@ -166,4 +168,15 @@ abstract ghost module M {
       )
     )
   )
-)
+
+(TopDecl
+    (SubModuleDecl
+      (ModuleDefinition
+        (ModuleQualifiedName
+          (ModuleName
+            (NoUSIdent
+              (noUSNondigitIdChar))))
+        (ModuleQualifiedName
+          (ModuleName
+            (NoUSIdent
+              (noUSNondigitIdChar))))))))
