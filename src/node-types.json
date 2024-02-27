@@ -1,5 +1,78 @@
 [
   {
+    "type": "Attribute",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "AttributeName",
+          "named": true
+        },
+        {
+          "type": "Expressions",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "AttributeName",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "NoUSIdent",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "DeclModifier",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "ExportId",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "NoUSIdent",
+          "named": true
+        },
+        {
+          "type": "digits",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "Expressions",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "Expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "IncludeDirective_",
     "named": true,
     "fields": {},
@@ -9,6 +82,203 @@
       "types": [
         {
           "type": "stringToken",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ModuleDefinition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "Attribute",
+          "named": true
+        },
+        {
+          "type": "ModuleQualifiedName",
+          "named": true
+        },
+        {
+          "type": "TopDecl",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ModuleExport",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "ExportId",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ModuleExportSuffix",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ExportId",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ModuleImport",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ModuleName",
+          "named": true
+        },
+        {
+          "type": "QualifiedModuleExport",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ModuleName",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "NoUSIdent",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ModuleQualifiedName",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ModuleName",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "NoUSIdent",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "idchar",
+          "named": true
+        },
+        {
+          "type": "noUSNondigitIdChar",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "QualifiedModuleExport",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ModuleExportSuffix",
+          "named": true
+        },
+        {
+          "type": "ModuleQualifiedName",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "SubModuleDecl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "ModuleDefinition",
+          "named": true
+        },
+        {
+          "type": "ModuleExport",
+          "named": true
+        },
+        {
+          "type": "ModuleImport",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "TopDecl",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "DeclModifier",
+          "named": true
+        },
+        {
+          "type": "SubModuleDecl",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "digits",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "digit",
           "named": true
         }
       ]
@@ -30,6 +300,25 @@
     }
   },
   {
+    "type": "ident",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "idchar",
+          "named": true
+        },
+        {
+          "type": "nondigitIdChar",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "fields": {},
@@ -39,6 +328,10 @@
       "types": [
         {
           "type": "IncludeDirective_",
+          "named": true
+        },
+        {
+          "type": "TopDecl",
           "named": true
         }
       ]
@@ -72,8 +365,32 @@
     "named": false
   },
   {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": ".",
+    "named": false
+  },
+  {
+    "type": "...",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
     "type": "@",
     "named": false
+  },
+  {
+    "type": "Expression",
+    "named": true
   },
   {
     "type": "\\\"",
@@ -112,11 +429,75 @@
     "named": false
   },
   {
+    "type": "_",
+    "named": false
+  },
+  {
+    "type": "`",
+    "named": false
+  },
+  {
+    "type": "abstract",
+    "named": false
+  },
+  {
+    "type": "digit",
+    "named": true
+  },
+  {
+    "type": "export",
+    "named": false
+  },
+  {
+    "type": "extends",
+    "named": false
+  },
+  {
+    "type": "ghost",
+    "named": false
+  },
+  {
     "type": "hexdigit",
     "named": true
   },
   {
+    "type": "idchar",
+    "named": true
+  },
+  {
+    "type": "import",
+    "named": false
+  },
+  {
     "type": "include",
+    "named": false
+  },
+  {
+    "type": "module",
+    "named": false
+  },
+  {
+    "type": "noUSNondigitIdChar",
+    "named": true
+  },
+  {
+    "type": "nondigitIdChar",
+    "named": true
+  },
+  {
+    "type": "opaque",
+    "named": false
+  },
+  {
+    "type": "opened",
+    "named": false
+  },
+  {
+    "type": "refines",
+    "named": false
+  },
+  {
+    "type": "static",
     "named": false
   },
   {
@@ -126,6 +507,14 @@
   {
     "type": "verbatimStringChar",
     "named": true
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "{:",
+    "named": false
   },
   {
     "type": "}",

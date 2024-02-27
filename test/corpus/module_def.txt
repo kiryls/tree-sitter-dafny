@@ -1,0 +1,68 @@
+=================
+Module Definition
+=================
+
+module ModuleNameA {}
+module {: AttrName } ModuleNameB {}
+
+---
+
+(source_file
+  (TopDecl
+    (SubModuleDecl
+      (ModuleDefinition
+        (ModuleQualifiedName
+          (ModuleName
+            (NoUSIdent
+              (noUSNondigitIdChar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              )
+            )
+          )
+        )
+      )
+    )
+(TopDecl
+    (SubModuleDecl
+      (ModuleDefinition
+        (Attribute
+          (AttributeName
+            (NoUSIdent
+              (noUSNondigitIdChar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar))))
+        (ModuleQualifiedName
+          (ModuleName
+            (NoUSIdent
+              (noUSNondigitIdChar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              (idchar)
+              )
+            )
+          )
+        )
+      )
+    )
+  )
