@@ -39,6 +39,21 @@
     "fields": {}
   },
   {
+    "type": "EquivExpression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ImpliesExpliesExpression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "ExportId",
     "named": true,
     "fields": {},
@@ -52,6 +67,25 @@
         },
         {
           "type": "digits",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "Expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "EquivExpression",
+          "named": true
+        },
+        {
+          "type": "Expression",
           "named": true
         }
       ]
@@ -381,6 +415,14 @@
     "named": false
   },
   {
+    "type": ";",
+    "named": false
+  },
+  {
+    "type": "<==>",
+    "named": false
+  },
+  {
     "type": "=",
     "named": false
   },
@@ -389,7 +431,7 @@
     "named": false
   },
   {
-    "type": "Expression",
+    "type": "ImpliesExpliesExpression",
     "named": true
   },
   {

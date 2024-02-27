@@ -1,0 +1,105 @@
+[x] IncludeDirective_
+[x] stringToken
+[x] stringChar
+[x] escapedChar
+[x] hexdigit
+[x] verbatimStringChar
+[/] TopDecl
+[x] DeclModifier
+[x] SubModuleDecl
+[x] ModuleDefinition
+[x] Attribute
+[x] AttributeName
+[x] NoUSIdent
+[x] Expressions
+[x] ModuleQualifiedName
+[x] ModuleImport
+[x] QualifiedModuleExport
+[x] ModuleExportSuffix
+[x] ExportId
+[x] digits
+[x] ModuleName
+[x] ModuleExport
+[x] letter
+[x] digit
+[x] ident
+[x] nondigitIdChar
+[x] idchar
+[x] Ident
+[x] WildIdent
+
+
+Attribute = "{:" AttributeName [ Expressions ] "}"
+
+AttributeName = NoUSIdent
+
+NoUSIdent = ident - "_" { idchar }
+
+ident = nondigitIdChar { idchar } - charToken - reservedword
+
+idchar = nondigitIdChar + digit
+
+nondigitIdChar = letter + special
+
+charToken = "'" ( charChar | escapedChar ) "'"
+
+Expressions =
+  Expression(allowLemma: true, allowLambda: true)
+  { "," Expression(allowLemma: true, allowLambda: true) }
+
+Expression(allowLemma, allowLambda, allowBitwiseOps = true) =
+  EquivExpression(allowLemma, allowLambda, allowBitwiseOps)
+  [ ";" Expression(allowLemma, allowLambda, allowBitwiseOps) ]
+
+EquivExpression(allowLemma, allowLambda, allowBitwiseOps) =
+  ImpliesExpliesExpression(allowLemma, allowLambda, allowBitwiseOps)
+  { "<==>" ImpliesExpliesExpression(allowLemma, allowLambda, allowBitwiseOps) }
+
+ImpliesExpliesExpression(allowLemma, allowLambda, allowBitwiseOps) =
+  LogicalExpression(allowLemma, allowLambda)
+  [ (  "==>" ImpliesExpression(allowLemma, allowLambda, allowBitwiseOps)
+    | "<==" LogicalExpression(allowLemma, allowLambda, allowBitwiseOps)
+            { "<==" LogicalExpression(allowLemma, allowLambda, allowBitwiseOps) }
+    )
+  ]
+
+ImpliesExpression(allowLemma, allowLambda, allowBitwiseOps) =
+  LogicalExpression(allowLemma, allowLambda, allowBitwiseOps)
+  [  "==>" ImpliesExpression(allowLemma, allowLambda, allowBitwiseOps) ]
+
+LogicalExpression(allowLemma, allowLambda, allowBitwiseOps) =
+  [ "&&" | "||" ]
+  RelationalExpression(allowLemma, allowLambda, allowBitwiseOps)
+  { ( "&&" | "||" )
+    RelationalExpression(allowLemma, allowLambda, allowBitwiseOps)
+  }
+
+RelationalExpression(allowLemma, allowLambda, allowBitwiseOps) =
+  ShiftTerm(allowLemma, allowLambda, allowBitwiseOps)
+  { RelOp ShiftTerm(allowLemma, allowLambda, allowBitwiseOps) }
+
+RelOp =
+  ( "=="
+    [ "#" "[" Expression(allowLemma: true, allowLambda: true) "]" ]
+  | "!="
+    [ "#" "[" Expression(allowLemma: true, allowLambda: true) "]" ]
+  | "<" | ">" | "<=" | ">="
+  | "in"
+  | "!in"
+  | "!!"
+  )
+
+ShiftTerm(allowLemma, allowLambda, allowBitwiseOps) =
+  Term(allowLemma, allowLambda, allowBitwiseOps)
+  { ShiftOp Term(allowLemma, allowLambda, allowBitwiseOps) }
+
+ShiftOp = ( "<<" | ">>" )
+
+Term(allowLemma, allowLambda, allowBitwiseOps) =
+  Factor(allowLemma, allowLambda, allowBitwiseOps)
+  { AddOp Factor(allowLemma, allowLambda, allowBitwiseOps) }
+
+AddOp = ( "+" | "-" )
+
+
+
