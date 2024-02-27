@@ -49,7 +49,7 @@ module.exports = grammar({
       repeat(seq(',', $.Expression))
     ),
 
-    Expression: $ => token('[ expression ]'),
+    Expression: $ => token('[EXPR]'),
 
 
     stringToken: $ => choice(
