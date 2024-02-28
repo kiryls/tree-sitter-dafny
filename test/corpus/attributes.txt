@@ -1,0 +1,39 @@
+==========
+Attributes
+==========
+
+module {:A} M {}
+
+module {:A # <==> #} M {}
+
+---
+
+(source_file
+  (TopDecl
+    (SubModuleDecl
+      (ModuleDefinition
+        (Attribute
+          (AttributeName
+            (NoUSIdent
+              (noUSNondigitIdChar))))
+        (ModuleQualifiedName
+          (ModuleName
+            (NoUSIdent
+              (noUSNondigitIdChar)))))))
+
+   (TopDecl
+    (SubModuleDecl
+      (ModuleDefinition
+        (Attribute
+          (AttributeName
+            (NoUSIdent
+              (noUSNondigitIdChar)))
+          (Expressions
+            (Expression
+              (EquivExpression
+                (ImpliesExpliesExpression)
+                (ImpliesExpliesExpression)))))
+        (ModuleQualifiedName
+          (ModuleName
+            (NoUSIdent
+              (noUSNondigitIdChar))))))))
