@@ -1,1 +1,3 @@
-module M refines N {}
+module {:A} M {}
+
+module {:A # <==> #} M {}

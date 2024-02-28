@@ -18,6 +18,7 @@ module.exports = grammar({
       repeat($.DeclModifier),
       choice(
         $.SubModuleDecl,
+        $.ClassDecl
         // todo other possible tokens
       )
     ),
@@ -69,6 +70,93 @@ module.exports = grammar({
 
     ExportId: $ => choice($.NoUSIdent, $.digits),
 
+    //
+    // Classes
+    //
+
+    ClassDecl: $ => seq(
+      'class',
+      repeat($.Attribute),
+      $.ClassName,
+      optional($.GenericParameters),
+      optional(
+        choice(
+          seq('extends', $.Type, repeat(seq(',', $.Type))), 
+          $.ellipsis
+        )
+      ),
+      '{',
+      repeat(seq(
+        repeat($.DeclModifier),
+        $.ClassMemberDecl  
+      )),
+      '}',
+    ),
+
+    ClassName: $ => $.NoUSIdent,
+
+    GenericParameters: $ => seq(
+      '<',
+      optional($.Variance),
+      $.TypeVariableName,
+      repeat($.TypeParameterCharacteristics),
+      repeat(seq( ',', $.TypeVariableName, repeat($.TypeParameterCharacteristics))),
+      '>'
+    ),
+
+    Variance: $ => choice('*', '+', '!', '-'),
+
+    TypeVariableName: $ => $.NoUSIdent,
+
+    TypeParameterCharacteristics: $ => seq(
+      '(',
+      $.TPCharOption,
+      repeat(seq(',', $.TPCharOption)),
+      ')'
+    ),
+
+    TPCharOption: $ => choice('==', '0', '00', seq('!', 'new')),
+
+    ClassMemberDecl: $ => choice(
+      $.FieldDecl,
+      $.ConstantFieldDecl,
+      // $.FunctionDecl,
+      // $.MethodDecl
+    ),
+
+    FieldDecl: $ => seq(
+      'var',
+      repeat($.Attribute),
+      $.FIdentType,
+      repeat(seq(',', $.FIdentType))
+    ),
+
+    ConstantFieldDecl: $ => seq(
+      'const',
+      repeat($.Attribute),
+      $.CIdentType,
+      optional($.ellipsis),
+      optional(seq( ':=', $.Expression))
+    ),
+
+
+    //
+    // Functions
+    //
+    
+
+    //
+    // Methods
+    //
+
+
+
+    //
+    // Types
+    //
+
+    Type: $ => '[Type]',
+
 
     //
     // Strings
@@ -99,6 +187,8 @@ module.exports = grammar({
 
 
     // \b(?!abstract|allocated|as|assert|assume|bool|break|by|calc|case|char|class|codatatype|const|constructor|continue|datatype|decreases|else|ensures|exists|expect|export|extends|false|for|forall|fresh|function|ghost|if|imap|import|in|include|int|invariant|is|iset|iterator|label|lemma|map|match|method|modifies|modify|module|multiset|nameonly|nat|new|newtype|null|object|object?|old|opaque|opened|ORDINALpredicate|print|provides|reads|real|refines|requires|return|returns|reveal|reveals|seq|set|static|string|then|this|trait|true|twostate|type|unchanged|var|while|witness|yield|yields\b)\w+\b
+    
+    ellipsis: $ => '...',
 
     Attribute: $ => seq('{:', $.AttributeName, optional($.Expressions), '}'),
 
@@ -108,6 +198,12 @@ module.exports = grammar({
       $.noUSNondigitIdChar,
       repeat($.idchar)
     ),
+
+    FIdentType: $ => seq($.NoUSIdentOrDigits, ':', $.Type),
+
+    CIdentType: $ => seq($.NoUSIdentOrDigits, optional(seq(':', $.Type))),
+
+    NoUSIdentOrDigits: $ => choice($.NoUSIdent, $.digits),
 
     noUSNondigitIdChar: $ => /[a-zA-Z?']/,
     noUSIdChar: $ => /[a-zA-Z0-9?']/,
@@ -145,7 +241,7 @@ module.exports = grammar({
 
     EquivExpression: $ => seq($.ImpliesExpliesExpression, repeat(seq('<==>', $.ImpliesExpliesExpression))),
 
-    ImpliesExpliesExpression: $ => '#',
+    ImpliesExpliesExpression: $ => '#'
 
 
   }
