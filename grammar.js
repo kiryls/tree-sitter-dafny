@@ -121,7 +121,7 @@ module.exports = grammar({
       $.FieldDecl,
       $.ConstantFieldDecl,
       // $.FunctionDecl,
-      // $.MethodDecl
+      $.MethodDecl
     ),
 
     FieldDecl: $ => seq(
@@ -148,6 +148,79 @@ module.exports = grammar({
     //
     // Methods
     //
+
+    MethodDecl: $ => seq(
+      $.MethodKeyword_,
+      repeat($.Attribute),
+      optional($.MethodFunctionName),
+      choice($.MethodSignature_, $.ellipsis),
+      repeat($.MethodSpec),
+      optional($.BlockStmt)
+    ),
+
+    MethodKeyword_: $ => choice(
+      'method',
+      'constructor',
+      'lemma',
+      seq('twostate', 'lemma'),
+      seq('least', 'lemma'),
+      seq('greatest', 'lemma')
+    ),
+
+    MethodSignature_: $ => seq(
+      optional($.GenericParameters),
+      optional($.KType),
+      $.Formals,
+      optional(seq('returns', $.Formals))
+    ),
+
+    KType: $ => seq('[', choice('nat', 'ORDINAL'), ']'),
+
+    Formals: $ => seq(
+      '(',
+      optional(seq($.GIdentType, repeat(seq(',', $.GIdentType)))),
+      ')'
+    ),
+
+    MethodSpec: $ => choice(
+      // $.ModifiesClause,
+      $.RequiresClause,
+      // $.EnsuresClause,
+      // $.DecreasesClause
+    ),
+
+
+    //
+    // Clauses
+    //
+    
+    RequiresClause: $ => seq(
+      'requires',
+      repeat($.Attribute),
+      optional(seq($.LabelName, ':')),
+      $.Expression
+    ),
+    
+    LabelName: $ => $.NoUSIdentOrDigits,
+
+
+    //
+    // Statements
+    //
+
+    Stmt: $ => seq(repeat(seq('label', $.LabelName, ':')), $.NonLabeledStmt),
+
+    NonLabeledStmt: $ => choice(
+      // $.AssertStmt,
+      // $.AssumeStmt,
+      $.BlockStmt,
+      // $.BreakStmt,
+      // $.CalcStmt,
+      // ...
+      ),
+
+    BlockStmt: $ => seq('{', repeat($.Stmt), '}'),
+
 
 
 
@@ -194,6 +267,8 @@ module.exports = grammar({
 
     AttributeName: $ => $.NoUSIdent,
 
+    MethodFunctionName: $ => $.NoUSIdentOrDigits,
+
     NoUSIdent: $ => seq(
       $.noUSNondigitIdChar,
       repeat($.idchar)
@@ -202,6 +277,14 @@ module.exports = grammar({
     FIdentType: $ => seq($.NoUSIdentOrDigits, ':', $.Type),
 
     CIdentType: $ => seq($.NoUSIdentOrDigits, optional(seq(':', $.Type))),
+
+    GIdentType: $ => seq(
+      repeat(choice('ghost', 'new', 'nameonly', 'only')),
+      $.IdentType,
+      optional(seq(':=', $.Expression))
+    ),
+
+    IdentType: $ => seq($.WildIdent, ':', $.Type),
 
     NoUSIdentOrDigits: $ => choice($.NoUSIdent, $.digits),
 

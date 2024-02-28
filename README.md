@@ -46,4 +46,27 @@ This project aims to convert a snippet of Dafny code into an html which can be e
             - [x] Expression
           - [ ] FunctionDecl
           - [ ] MethodDecl
+            - [x] MethodKeyword_
+            - [x] Attribute
+            - [x] MethodFunctionName
+            - [x] MethodSignature_
+                - [x] GenericParameters
+                - [x] KType
+                - [x] Formals
+                    - [x] GIdentType
+                        - [x] IdentType
+                            - [x] WildIdent
+                            - [x] Type
+                        - [x] Expression
+            - [x] ellipsis
+            - [ ] MethodSpec
+                - [ ] ModifiesClause
+                - [x] RequiresClause
+                    - [x] Attribute
+                    - [x] LabelName
+                    - [x] Expression
+                - [ ] EnsuresClause
+                - [ ] DecreasesClause
+            - [/] BlockStmt
+                - [x] Stmt
 
